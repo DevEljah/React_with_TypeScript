@@ -16,7 +16,7 @@ function App() {
         onSelectItem={handleSelectItem}
       /> */}
       <Alert>
-        <h4>Hi you</h4>
+        Hey! <h4>Hi you</h4>
       </Alert>
     </>
   );
