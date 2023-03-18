@@ -1,4 +1,5 @@
 // import ListGroup from "./components/ListGroup";
+import { useState } from "react";
 import Alert from "./components/Alert";
 import MyButton from "./utils/MyButton";
 
@@ -9,6 +10,8 @@ function App() {
     console.log(item);
   }; */
 
+  const [toggle, setToggle] = useState(false);
+
   return (
     <>
       {/* <ListGroup
@@ -16,10 +19,13 @@ function App() {
         heading="Cities"
         onSelectItem={handleSelectItem}
       /> */}
-      <Alert>
-        Hey! <h4>Hi you</h4>
-      </Alert>
-      <MyButton color="danger">
+      {toggle && (
+        <Alert onClose={() => setToggle(false)}>
+          Hey!<h4>Alert</h4>
+        </Alert>
+      )}
+
+      <MyButton color="danger" onClick={() => setToggle(true)}>
         <h6>My Button</h6>
       </MyButton>
     </>

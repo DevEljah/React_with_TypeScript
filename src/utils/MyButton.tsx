@@ -1,43 +1,17 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
   // color?: string // =>>
   color?: "primary" | "secondary" | "danger";
-  // onClick: () => void;
+  onClick: () => void;
 }
 
-const MyButton = ({
-  children,
-  color = "primary" /* onClick */,
-}: ButtonProps) => {
-  const [toggle, setToggle] = useState(true);
+const MyButton = ({ children, color = "primary", onClick }: ButtonProps) => {
   return (
     <>
-      {toggle ? (
-        <div
-          className="alert alert-warning alert-dismissible fade show"
-          role="alert"
-        >
-          Alert
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            onClick={() => setToggle(false)}
-          ></button>
-        </div>
-      ) : (
-        ""
-      )}
-
-      <button
-        type="button"
-        className={"btn btn-" + color}
-        onClick={() => setToggle(true)}
-      >
-        {children}
+      <button type="button" className={"btn btn-" + color} onClick={onClick}>
+        {children} or your Button ;/
       </button>
     </>
   );
