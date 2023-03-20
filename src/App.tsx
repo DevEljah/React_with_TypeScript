@@ -24,7 +24,10 @@ function App() {
         <Alert onClose={() => setToggle(false)}>
           Hey!
           <h4
-            /* className={styles["list-group"]} */ className={styles.listGroup}
+            /* className={styles["list-group"]} */ className={[
+              styles.listGroup,
+              styles.container,
+            ].join(" ")} // joining the "styles" use (" ") space
           >
             Alert
           </h4>

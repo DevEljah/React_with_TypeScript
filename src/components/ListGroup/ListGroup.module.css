@@ -4,5 +4,7 @@
 } */
 .listGroup {
   background-color: rgb(96, 170, 230);
+}
+.container {
   text-align: center;
 }
