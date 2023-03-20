@@ -4,6 +4,7 @@ import Alert from "./components/Alert";
 import MyButton from "./utils/MyButton";
 import styles from "./components/ListGroup/ListGroup.module.css";
 import ListGroup from "./components/ListGroup/ListGroup";
+import ReactIcon from "./components/ReactIcon";
 
 function App() {
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+      <ReactIcon />
       <ListGroup
         items={items}
         heading="Cities"
