@@ -1,4 +1,19 @@
 import { /* MouseEvent,*/ useState } from "react";
+import styled from "styled-components";
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const List = styled.ul`
+  list-style: none;
+  background: #9e7b7b;
+  padding: 0px;
+`;
+const ListItem = styled.li<ListItemProps>`
+  padding: 2px;
+  background: ${(props) => (props.active ? "#218d88" : "none")};
+`;
 
 interface ListGroupProps {
   items: string[]; // an "array" of strings
@@ -11,7 +26,7 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
   // items = [];
 
   // let selectedIndex = 0;
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   // const [toggle, setToggle] = useState(true);
 
@@ -38,11 +53,12 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
       <h1> {heading} </h1>
       {/* {items.length === 0 ? <h4>No item foung</h4> : null} */}
       {items.length === 0 && <h4>No item foung</h4>}
-      <ul className="list-group">
+      <List className="list-group">
         {items.map((item, index) => (
-          <li
+          <ListItem
             // className={`${toggle ? "active" : n ull}`}
-            className={selectedIndex === index ? "list-group-item active" : ""}
+            /*  className={selectedIndex === index ? "list-group-item active" : ""} */
+            active={selectedIndex === index}
             key={item}
             onClick={() => {
               setSelectedIndex(index);
@@ -51,9 +67,9 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
             // style={myStyle}
           >
             <h4>{item}</h4>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
