@@ -5,9 +5,17 @@ import MyButton from "./utils/MyButton";
 import styles from "./components/ListGroup/ListGroup.module.css";
 import ListGroup from "./components/ListGroup/ListGroup";
 import ReactIcon from "./components/ReactIcon";
+import Drink from "./components/Drink";
 
 function App() {
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
+
+  // const [firstName, setFirstName] = useState(" ");
+  // const [lastName, setLastName] = useState(" ");
+  const [personName, setPersonName] = useState({
+    firstName: " ",
+    lastName: " ",
+  });
 
   const handleSelectItem = (item: string) => {
     console.log(item);
@@ -40,6 +48,7 @@ function App() {
       <MyButton color="danger" onClick={() => setToggle(true)}>
         <h6>My Button</h6>
       </MyButton>
+      <Drink />
     </>
   );
 }
