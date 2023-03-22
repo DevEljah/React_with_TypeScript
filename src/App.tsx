@@ -6,6 +6,7 @@ import styles from "./components/ListGroup/ListGroup.module.css";
 import ListGroup from "./components/ListGroup/ListGroup";
 import ReactIcon from "./components/ReactIcon";
 import Drink from "./components/Drink";
+import Customer from "./components/Customer";
 
 function App() {
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
@@ -49,6 +50,7 @@ function App() {
         <h6>My Button</h6>
       </MyButton>
       <Drink />
+      <Customer />
     </>
   );
 }
