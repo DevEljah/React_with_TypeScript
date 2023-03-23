@@ -7,6 +7,7 @@ import ListGroup from "./components/ListGroup/ListGroup";
 import ReactIcon from "./components/ReactIcon";
 import Drink from "./components/Drink";
 import Customer from "./components/Customer";
+import UpdatingArrays from "./components/UpdatingArrays";
 
 function App() {
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
@@ -51,6 +52,7 @@ function App() {
       </MyButton>
       <Drink />
       <Customer />
+      <UpdatingArrays />
     </>
   );
 }
