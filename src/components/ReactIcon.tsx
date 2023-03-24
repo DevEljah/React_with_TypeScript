@@ -11,7 +11,7 @@ const ReactIcon = () => {
   };
 
   return (
-    <>
+    <div>
       <BsFillCalendarFill
         color="blue"
         size="60"
@@ -30,7 +30,7 @@ const ReactIcon = () => {
           <AiOutlineHeart onClick={toggleHandler} size="60" type="button" />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

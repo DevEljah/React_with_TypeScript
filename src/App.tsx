@@ -32,7 +32,12 @@ function App() {
   return (
     <>
       <Navbar cartItemsCount={cartItems.length} />
-      <Cart cartItems={cartItems} />
+      <Cart
+        cartItems={cartItems}
+        onClear={() => {
+          setCartItems([]);
+        }}
+      />
       <ReactIcon />
       <ListGroup
         items={items}
