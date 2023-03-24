@@ -6,9 +6,9 @@ const Cart = ({ cartItems, onClear }: cartProps) => {
   return (
     <>
       <h4>Cart</h4>
-      <ul>
+      <ul style={{ listStyle: "none" }}>
         {cartItems.map((cartItem, index) => (
-          <li key={index}> {cartItem} </li>
+          <li key={index}>{cartItem}</li>
         ))}
       </ul>
       <button onClick={onClear} className="btn btn-primary">
