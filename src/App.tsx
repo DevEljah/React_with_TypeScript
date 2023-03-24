@@ -8,8 +8,12 @@ import ReactIcon from "./components/ReactIcon";
 import Drink from "./components/Drink";
 import Customer from "./components/Customer";
 import UpdatingArrays from "./components/UpdatingArrays";
+import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 
 function App() {
+  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
+
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
 
   // const [firstName, setFirstName] = useState(" ");
@@ -27,6 +31,8 @@ function App() {
 
   return (
     <>
+      <Navbar cartItemsCount={cartItems.length} />
+      <Cart cartItems={cartItems} />
       <ReactIcon />
       <ListGroup
         items={items}
