@@ -8,8 +8,19 @@ const StateExrcise = () => {
     },
   });
 
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    topping: ["Mushroom"],
+  });
+
   const handleChangeName = () => {
-    setGame({ ...game, player: { name: "Dev" } });
+    // game.player.name = "Dev" // vanilla js
+    setGame({ ...game, player: { ...game.player, name: "Dev" } });
+  };
+
+  const handleAddNewTopping = () => {
+    // pizza.topping.push("Cheese") // vanilla js
+    setPizza({ ...pizza, topping: [...pizza.topping, " - Cheese"] });
   };
   return (
     <>
@@ -17,6 +28,10 @@ const StateExrcise = () => {
       <div>
         <h4>Player Name: {game.player.name}</h4>
         <button onClick={handleChangeName}>Change Name</button>
+      </div>
+      <div>
+        <h4>Pizza topping: {pizza.topping}</h4>
+        <button onClick={handleAddNewTopping}>Add new topping</button>
       </div>
     </>
   );
