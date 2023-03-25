@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const StateExrcise = () => {
+const StateExrcise3 = () => {
   const [cart, setCart] = useState([
     { id: 1, title: "Prduct1", quantity: 1 },
     { id: 2, title: "Prduct2", quantity: 2 },
@@ -36,4 +36,4 @@ const StateExrcise = () => {
   );
 };
 
-export default StateExrcise;
+export default StateExrcise3;

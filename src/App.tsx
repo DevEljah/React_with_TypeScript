@@ -11,6 +11,8 @@ import UpdatingArrays from "./components/UpdatingArrays";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import StateExrcise from "./components/StateExrcise";
+import StateExrcise3 from "./components/StateExrcise3";
+import StateExrciseN from "./components/StateExrciseN";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -41,6 +43,8 @@ function App() {
       />
 
       <StateExrcise />
+      <StateExrcise3 />
+      <StateExrciseN />
       <ReactIcon />
       <ListGroup
         items={items}
