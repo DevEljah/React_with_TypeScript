@@ -10,7 +10,7 @@ const StateExrciseN = () => {
   });
 
   const updateQuantity = () => {
-    /* const newCart = {
+    const newCart = {
       ...cart,
       items: cart.items.map((item) => {
         if (item.title === "Product1") {
@@ -19,15 +19,15 @@ const StateExrciseN = () => {
         return item;
       }),
     };
-    setCart(newCart); */
+    setCart(newCart);
 
     ////oder//////
-    setCart({
+    /*   setCart({
       ...cart,
       items: cart.items.map((item) =>
         item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
       ),
-    });
+    }); */
   };
 
   return (

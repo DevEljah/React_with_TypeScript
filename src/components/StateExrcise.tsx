@@ -18,7 +18,7 @@ const StateExrcise = () => {
 
   return (
     <div>
-      <h2>StateExrcise-3</h2>
+      <h2>StateExrcise</h2>
       <div>
         <div>
           <h2>Cart Items:</h2>

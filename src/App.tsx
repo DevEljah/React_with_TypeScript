@@ -11,8 +11,8 @@ import UpdatingArrays from "./components/UpdatingArrays";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import StateExrcise from "./components/StateExrcise";
-import StateExrcise3 from "./components/StateExrcise3";
 import StateExrciseN from "./components/StateExrciseN";
+import ExpandableText from "./components/ExpandableText";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -42,8 +42,20 @@ function App() {
         }}
       />
 
+      <ExpandableText>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eos velit
+        accusamus, non eum doloremque architecto voluptates excepturi quos
+        minima, quaerat suscipit nobis. Tempora, odio et corrupti praesentium
+        dolores odit quis temporibus, dolor sed inventore voluptate, quasi dicta
+        quisquam ratione earum libero autem deleniti officia quaerat ut. Eaque
+        molestias, ullam corrupti animi nulla nostrum voluptates vel optio in
+        quisquam facere enim nam. Veritatis iusto inventore quisquam. Placeat
+        id, ab aliquid temporibus ratione veniam ut. Ut expedita sapiente
+        voluptas provident debitis ullam dolores velit. Tenetur voluptates at
+        blanditiis fugit commodi id porro error, ullam amet? Id quibusdam ea
+        voluptas vero. Hic.
+      </ExpandableText>
       <StateExrcise />
-      <StateExrcise3 />
       <StateExrciseN />
       <ReactIcon />
       <ListGroup
