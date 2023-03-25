@@ -13,6 +13,7 @@ import Cart from "./components/Cart";
 import StateExrcise from "./components/StateExrcise";
 import StateExrciseN from "./components/StateExrciseN";
 import ExpandableText from "./components/ExpandableText";
+import Form from "./components/Forms/From";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -34,14 +35,7 @@ function App() {
 
   return (
     <>
-      <Navbar cartItemsCount={cartItems.length} />
-      <Cart
-        cartItems={cartItems}
-        onClear={() => {
-          setCartItems([]);
-        }}
-      />
-
+      <Form />
       <ExpandableText>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eos velit
         accusamus, non eum doloremque architecto voluptates excepturi quos
@@ -55,10 +49,22 @@ function App() {
         blanditiis fugit commodi id porro error, ullam amet? Id quibusdam ea
         voluptas vero. Hic.
       </ExpandableText>
-      <StateExrcise />
+
+      {/* <Navbar cartItemsCount={cartItems.length} />
+      <Cart
+        cartItems={cartItems}
+        onClear={() => {
+          setCartItems([]);
+        }}
+      /> */}
+
+      {/* <StateExrcise />
       <StateExrciseN />
       <ReactIcon />
-      <ListGroup
+      <Drink />
+      <Customer />
+      <UpdatingArrays /> */}
+      {/*  <ListGroup
         items={items}
         heading="Cities"
         onSelectItem={handleSelectItem}
@@ -67,7 +73,7 @@ function App() {
         <Alert onClose={() => setToggle(false)}>
           Hey!
           <h4
-            /* className={styles["list-group"]} */ className={[
+            // className={styles["list-group"]} //  className={[
               styles.listGroup,
               styles.container,
             ].join(" ")} // joining the "styles" use (" ") space
@@ -76,13 +82,9 @@ function App() {
           </h4>
         </Alert>
       )}
-
       <MyButton color="danger" onClick={() => setToggle(true)}>
         <h6>My Button</h6>
-      </MyButton>
-      <Drink />
-      <Customer />
-      <UpdatingArrays />
+      </MyButton> */}
     </>
   );
 }
