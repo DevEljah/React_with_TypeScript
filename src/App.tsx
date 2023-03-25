@@ -22,16 +22,16 @@ function App() {
 
   // const [firstName, setFirstName] = useState(" ");
   // const [lastName, setLastName] = useState(" ");
-  const [personName, setPersonName] = useState({
+  /* const [personName, setPersonName] = useState({
     firstName: " ",
     lastName: " ",
-  });
+  }); */
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+  // const handleSelectItem = (item: string) => {
+  //   console.log(item);
+  // };
 
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
 
   return (
     <>
