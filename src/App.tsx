@@ -15,6 +15,7 @@ import StateExrciseN from "./components/StateExrciseN";
 import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Forms/From";
 import FormValidation from "./components/Forms/FormValidation";
+import FormWithZod from "./components/Forms/FormWithZod";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -36,7 +37,8 @@ function App() {
 
   return (
     <>
-      <FormValidation />
+      <FormWithZod />
+      {/* <FormValidation /> */}
       {/* <Form /> */}
       <ExpandableText>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eos velit
