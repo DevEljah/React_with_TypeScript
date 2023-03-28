@@ -20,8 +20,11 @@ const ProjectExpenseTracker = () => {
           id="description"
           type="text"
           className="form-control"
-          {...register("description")}
+          {...register("description", { required: true, minLength: 3 })}
         ></input>
+        {errors.description?.type === "required" && (
+          <p className="text-danger">The description field is required</p>
+        )}
       </div>
       <div className="mb-3">
         <label htmlFor="amount" className="form-label">
@@ -31,18 +34,25 @@ const ProjectExpenseTracker = () => {
           id="amount"
           type="number"
           className="form-control"
-          {...register("amount")}
+          {...register("amount", { required: true })}
         ></input>
+        {errors.amount?.type === "required" && (
+          <p className="text-danger">The amount field is required</p>
+        )}
       </div>
       <div>
         <label htmlFor="category" className="form-label">
           Category
         </label>
-        <select className="form-select" aria-label="Default select example">
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          {...register("category", { required: true })}
+        >
           <option>none</option>
-          <option value="1">Groceries</option>
-          <option value="2">Utilities</option>
-          <option value="3">Entertainment</option>
+          <option value="groceries">Groceries</option>
+          <option value="utilities">Utilities</option>
+          <option value="entertainment">Entertainment</option>
         </select>
       </div>
       <br />
