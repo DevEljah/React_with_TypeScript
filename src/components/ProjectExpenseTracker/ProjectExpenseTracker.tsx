@@ -1,29 +1,41 @@
+import { useForm, FieldValues } from "react-hook-form";
+
 const ProjectExpenseTracker = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: FieldValues) => console.log(data);
+
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Project - Expense Tracker</h2>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
+        <label htmlFor="description" className="form-label">
           Description
         </label>
         <input
+          id="description"
           type="text"
           className="form-control"
-          id="exampleFormControlInput1"
+          {...register("description")}
         ></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
+        <label htmlFor="amount" className="form-label">
           Amount
         </label>
         <input
+          id="amount"
           type="number"
           className="form-control"
-          id="exampleFormControlInput1"
+          {...register("amount")}
         ></input>
       </div>
       <div>
-        <label htmlFor="exampleFormControlInput1" className="form-label">
+        <label htmlFor="category" className="form-label">
           Category
         </label>
         <select className="form-select" aria-label="Default select example">
@@ -37,7 +49,7 @@ const ProjectExpenseTracker = () => {
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
-    </div>
+    </form>
   );
 };
 
