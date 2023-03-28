@@ -16,6 +16,7 @@ import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Forms/From";
 import FormValidation from "./components/Forms/FormValidation";
 import FormWithZod from "./components/Forms/FormWithZod";
+import ProjectExpenseTracker from "./components/ProjectExpenseTracker/ProjectExpenseTracker";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -37,10 +38,11 @@ function App() {
 
   return (
     <>
-      <FormWithZod />
+      <ProjectExpenseTracker />
+      {/* <FormWithZod /> */}
       {/* <FormValidation /> */}
       {/* <Form /> */}
-      <ExpandableText>
+      {/* <ExpandableText>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eos velit
         accusamus, non eum doloremque architecto voluptates excepturi quos
         minima, quaerat suscipit nobis. Tempora, odio et corrupti praesentium
@@ -52,7 +54,7 @@ function App() {
         voluptas provident debitis ullam dolores velit. Tenetur voluptates at
         blanditiis fugit commodi id porro error, ullam amet? Id quibusdam ea
         voluptas vero. Hic.
-      </ExpandableText>
+      </ExpandableText> */}
 
       {/* <Navbar cartItemsCount={cartItems.length} />
       <Cart
