@@ -16,7 +16,8 @@ import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Forms/From";
 import FormValidation from "./components/Forms/FormValidation";
 import FormWithZod from "./components/Forms/FormWithZod";
-import ProjectExpenseTracker from "./components/ProjectExpenseTracker/ProjectExpenseTracker";
+import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
+import ExpensList from "./components/ProjectExpenseTracker/ExpensList";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -36,9 +37,23 @@ function App() {
 
   // const [toggle, setToggle] = useState(false);
 
+  ////////////////////////////////////////////
+  ////////Project-Expense Tracker/////////////
+  ////////////////////////////////////////////
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
+    { id: 2, description: "bbb", amount: 10, category: "Utilities" },
+    { id: 3, description: "ccc", amount: 10, category: "Utilities" },
+    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
+  ]);
+
   return (
     <>
-      <ProjectExpenseTracker />
+      <ExpensList
+        expenses={expenses}
+        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+      />
+      {/* <ProjectExpenseTracker /> */}
       {/* <FormWithZod /> */}
       {/* <FormValidation /> */}
       {/* <Form /> */}

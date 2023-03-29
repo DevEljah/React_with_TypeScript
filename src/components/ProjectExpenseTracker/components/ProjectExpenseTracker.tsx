@@ -25,6 +25,9 @@ const ProjectExpenseTracker = () => {
         {errors.description?.type === "required" && (
           <p className="text-danger">The description field is required</p>
         )}
+        {errors.description?.type === "minLength" && (
+          <p className="text-danger">The name must be at least 3 charracters</p>
+        )}
       </div>
       <div className="mb-3">
         <label htmlFor="amount" className="form-label">
@@ -39,6 +42,10 @@ const ProjectExpenseTracker = () => {
         {errors.amount?.type === "required" && (
           <p className="text-danger">The amount field is required</p>
         )}
+        <br />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </div>
       <div>
         <label htmlFor="category" className="form-label">
@@ -47,7 +54,7 @@ const ProjectExpenseTracker = () => {
         <select
           className="form-select"
           aria-label="Default select example"
-          {...register("category", { required: true })}
+          // {...register("category", { required: true })}
         >
           <option>none</option>
           <option value="groceries">Groceries</option>
@@ -56,9 +63,6 @@ const ProjectExpenseTracker = () => {
         </select>
       </div>
       <br />
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
     </form>
   );
 };
