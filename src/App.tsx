@@ -19,6 +19,11 @@ import FormWithZod from "./components/Forms/FormWithZod";
 import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
 import ExpensList from "./components/ProjectExpenseTracker/ExpensList";
 import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
+import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
+
+////////Project-Expense Tracker/////////////
+export const categories = ["Groceries", "Utilities", "Entertainment"];
+////////Project-Expense Tracker/////////////
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -56,6 +61,7 @@ function App() {
 
   return (
     <>
+      <ExpenseForm />
       <ExpensFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
       />
