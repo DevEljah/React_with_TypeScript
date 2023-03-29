@@ -41,18 +41,26 @@ function App() {
   ////////////////////////////////////////////
   ////////Project-Expense Tracker/////////////
   ////////////////////////////////////////////
+  const [selectedGategory, setSelectedGategory] = useState("");
+
   const [expenses, setExpenses] = useState([
     { id: 1, description: "aaa", amount: 10, category: "Utilities" },
-    { id: 2, description: "bbb", amount: 10, category: "Utilities" },
+    { id: 2, description: "bbb", amount: 10, category: "Grocieries" },
     { id: 3, description: "ccc", amount: 10, category: "Utilities" },
     { id: 4, description: "ddd", amount: 10, category: "Utilities" },
   ]);
 
+  const visibleExpenses = selectedGategory
+    ? expenses.filter((exp) => exp.category === selectedGategory)
+    : expenses;
+
   return (
     <>
-      <ExpensFilter onSelectCategory={(category) => console.log(category)} />
+      <ExpensFilter
+        onSelectCategory={(category) => setSelectedGategory(category)}
+      />
       <ExpensList
-        expenses={expenses}
+        expenses={visibleExpenses}
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
       />
       {/* <ProjectExpenseTracker /> */}
