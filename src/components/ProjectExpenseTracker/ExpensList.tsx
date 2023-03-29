@@ -15,7 +15,7 @@ const ExpensList = ({ expenses, onDelete }: Props) => {
 
   return (
     <>
-      <table className="tabe table-bordered">
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th>Description</th>
@@ -27,13 +27,13 @@ const ExpensList = ({ expenses, onDelete }: Props) => {
         <tbody>
           {expenses.map((expense) => (
             <tr key={expense.id}>
-              <td>{expense.amount}</td>
-              <td> {expense.category} </td>
               <td>{expense.description}</td>
+              <td>${expense.amount.toFixed(2)}</td>
+              <td>{expense.category}</td>
               <td>
                 <button
-                  onClick={() => onDelete(expense.id)}
                   className="btn btn-outline-danger"
+                  onClick={() => onDelete(expense.id)}
                 >
                   Delete
                 </button>
@@ -45,10 +45,10 @@ const ExpensList = ({ expenses, onDelete }: Props) => {
           <tr>
             <td>Total</td>
             <td>
+              $
               {expenses
                 .reduce((acc, expense) => expense.amount + acc, 0)
-                .toFixed()}{" "}
-              Eur
+                .toFixed(2)}
             </td>
             <td></td>
             <td></td>

@@ -18,6 +18,7 @@ import FormValidation from "./components/Forms/FormValidation";
 import FormWithZod from "./components/Forms/FormWithZod";
 import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
 import ExpensList from "./components/ProjectExpenseTracker/ExpensList";
+import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
 
 function App() {
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <>
+      <ExpensFilter onSelectCategory={(category) => console.log(category)} />
       <ExpensList
         expenses={expenses}
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
