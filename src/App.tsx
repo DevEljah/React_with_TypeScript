@@ -17,15 +17,33 @@ import Form from "./components/Forms/From";
 import FormValidation from "./components/Forms/FormValidation";
 import FormWithZod from "./components/Forms/FormWithZod";
 import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
-import ExpensList from "./components/ProjectExpenseTracker/ExpensList";
+////////Project-Expense Tracker/////////////
+import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList";
 import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
 
-////////Project-Expense Tracker/////////////
 export const categories = ["Groceries", "Utilities", "Entertainment"];
-////////Project-Expense Tracker/////////////
+//////Project-Expense Tracker///End-Line/////
 
 function App() {
+  ////////////////////////////////////////////
+  ////////Project-Expense Tracker/////////////
+  ////////////////////////////////////////////
+  const [selectedGategory, setSelectedGategory] = useState("");
+
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
+    { id: 2, description: "bbb", amount: 10, category: "Groceries" },
+    { id: 3, description: "ccc", amount: 10, category: "Utilities" },
+    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
+  ]);
+
+  const visibleExpenses = selectedGategory
+    ? expenses.filter((exp) => exp.category === selectedGategory)
+    : expenses;
+  /////Project-Expense Tracker////End-Line////
+  ////////////////////////////////////////////
+
   const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
 
   let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
@@ -43,24 +61,9 @@ function App() {
 
   // const [toggle, setToggle] = useState(false);
 
-  ////////////////////////////////////////////
-  ////////Project-Expense Tracker/////////////
-  ////////////////////////////////////////////
-  const [selectedGategory, setSelectedGategory] = useState("");
-
-  const [expenses, setExpenses] = useState([
-    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
-    { id: 2, description: "bbb", amount: 10, category: "Grocieries" },
-    { id: 3, description: "ccc", amount: 10, category: "Utilities" },
-    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
-  ]);
-
-  const visibleExpenses = selectedGategory
-    ? expenses.filter((exp) => exp.category === selectedGategory)
-    : expenses;
-
   return (
     <>
+      {/* ////////Project-Expense Tracker/////////////*/}
       <ExpenseForm />
       <ExpensFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
@@ -69,6 +72,8 @@ function App() {
         expenses={visibleExpenses}
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
       />
+      {/* //////Project-Expense Tracker///End-Line/// */}
+
       {/* <ProjectExpenseTracker /> */}
       {/* <FormWithZod /> */}
       {/* <FormValidation /> */}
