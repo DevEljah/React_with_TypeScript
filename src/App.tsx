@@ -64,7 +64,7 @@ function App() {
   return (
     <>
       {/* ////////Project-Expense Tracker/////////////*/}
-      <ExpenseForm />
+      <ExpenseForm onSubmit={(data) => console.log(data)} />
       <ExpensFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
       />

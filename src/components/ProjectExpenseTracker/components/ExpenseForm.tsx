@@ -1,14 +1,18 @@
 import { useForm, FieldValues } from "react-hook-form";
 import { categories } from "../../../App";
 
-const ExpenseForm = () => {
+interface Props {
+  onSubmit: (data: FieldValues) => void;
+}
+
+const ExpenseForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: FieldValues) => console.log(data);
+  // const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
     <>
