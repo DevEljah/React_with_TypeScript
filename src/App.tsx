@@ -22,7 +22,7 @@ import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList
 import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
 
-export const categories = ["Groceries", "Utilities", "Entertainment"];
+export const categories = ["Groceries", "Utilities", "Entertainment"] as const;
 //////Project-Expense Tracker///End-Line/////
 
 function App() {
