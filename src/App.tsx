@@ -21,8 +21,14 @@ import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components
 import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList";
 import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
+import categories from "./components/ProjectExpenseTracker/categories";
 
-export const categories = ["Groceries", "Utilities", "Entertainment"] as const;
+export interface Expense {
+  id: number;
+  description: string;
+  amount: number;
+  category: string;
+}
 //////Project-Expense Tracker///End-Line/////
 
 function App() {
@@ -31,7 +37,7 @@ function App() {
   ////////////////////////////////////////////
   const [selectedGategory, setSelectedGategory] = useState("");
 
-  const [expenses, setExpenses] = useState([
+  const [expenses, setExpenses] = useState<Expense[]>([
     { id: 1, description: "aaa", amount: 10, category: "Utilities" },
     { id: 2, description: "bbb", amount: 10, category: "Groceries" },
     { id: 3, description: "ccc", amount: 10, category: "Utilities" },
@@ -41,6 +47,16 @@ function App() {
   const visibleExpenses = selectedGategory
     ? expenses.filter((exp) => exp.category === selectedGategory)
     : expenses;
+
+  const handleAddExpense = (newExpense: Omit<Expense, "id">) => {
+    const expenseWithId = { ...newExpense, id: expenses.length + 1 };
+    setExpenses([...expenses, expenseWithId]);
+  };
+
+  const deleteExpense = (id: number) => {
+    setExpenses(expenses.filter((e) => e.id !== id));
+  };
+
   /////Project-Expense Tracker////End-Line////
   ////////////////////////////////////////////
 
@@ -64,14 +80,11 @@ function App() {
   return (
     <>
       {/* ////////Project-Expense Tracker/////////////*/}
-      <ExpenseForm onSubmit={(data) => console.log(data)} />
+      <ExpenseForm onSubmit={handleAddExpense} />
       <ExpensFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
       />
-      <ExpensList
-        expenses={visibleExpenses}
-        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
-      />
+      <ExpensList expenses={visibleExpenses} onDelete={deleteExpense} />
       {/* //////Project-Expense Tracker///End-Line/// */}
 
       {/* <ProjectExpenseTracker /> */}

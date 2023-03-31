@@ -13,6 +13,8 @@ interface Props {
 const ExpensList = ({ expenses, onDelete }: Props) => {
   if (expenses.length === 0) return null;
 
+  // const check = expenses.map((expense) => console.log(typeof expense.amount));
+
   return (
     <>
       <table className="table table-bordered">
@@ -28,7 +30,11 @@ const ExpensList = ({ expenses, onDelete }: Props) => {
           {expenses.map((expense) => (
             <tr key={expense.id}>
               <td>{expense.description}</td>
-              <td>${expense.amount.toFixed(2)}</td>
+              <td>
+                {typeof expense.amount === "number"
+                  ? expense.amount.toFixed(2)
+                  : parseFloat(expense.amount).toFixed(2)}
+              </td>
               <td>{expense.category}</td>
               <td>
                 <button
@@ -47,7 +53,7 @@ const ExpensList = ({ expenses, onDelete }: Props) => {
             <td>
               $
               {expenses
-                .reduce((acc, expense) => expense.amount + acc, 0)
+                .reduce((acc, expense) => Number(expense.amount) + acc, 0)
                 .toFixed(2)}
             </td>
             <td></td>
