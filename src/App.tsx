@@ -1,39 +1,21 @@
-// import ListGroup from "./components/ListGroup";
 import { useState } from "react";
-import Alert from "./components/Alert";
-import MyButton from "./utils/MyButton";
-import styles from "./components/ListGroup/ListGroup.module.css";
-import ListGroup from "./components/ListGroup/ListGroup";
-import ReactIcon from "./components/ReactIcon";
-import Drink from "./components/Drink";
-import Customer from "./components/Customer";
-import UpdatingArrays from "./components/UpdatingArrays";
-import Navbar from "./components/Navbar";
-import Cart from "./components/Cart";
-import StateExrcise from "./components/StateExrcise";
-import StateExrciseN from "./components/StateExrciseN";
+
 import ExpandableText from "./components/ExpandableText";
-import Form from "./components/Forms/From";
-import FormValidation from "./components/Forms/FormValidation";
-import FormWithZod from "./components/Forms/FormWithZod";
-import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
+
+////////////////////////////////////////////
 ////////Project-Expense Tracker/////////////
 import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList";
 import ExpenseFilter from "./components/ProjectExpenseTracker/components/ExpenseFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
-
+import ProductList from "./components/ProjectExpenseTracker/components/ProductList";
 export interface Expense {
   id: number;
   description: string;
   amount: number;
   category: string;
 }
-//////Project-Expense Tracker///End-Line/////
 
 function App() {
-  ////////////////////////////////////////////
-  ////////Project-Expense Tracker/////////////
-  ////////////////////////////////////////////
   const [selectedGategory, setSelectedGategory] = useState("");
 
   const [expenses, setExpenses] = useState<Expense[]>([
@@ -55,40 +37,19 @@ function App() {
   const deleteExpense = (id: number) => {
     setExpenses(expenses.filter((e) => e.id !== id));
   };
-  /////Project-Expense Tracker////End-Line////
-  ////////////////////////////////////////////
+  ////////Project-Expense Tracker////End//////
 
-  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
-
-  let items = ["Berlin", "Frankfurt", "Maxico-City", "Paris"];
-
-  // const [firstName, setFirstName] = useState(" ");
-  // const [lastName, setLastName] = useState(" ");
-  /* const [personName, setPersonName] = useState({
-    firstName: " ",
-    lastName: " ",
-  }); */
-
-  // const handleSelectItem = (item: string) => {
-  //   console.log(item);
-  // };
-
-  // const [toggle, setToggle] = useState(false);
+  const [category, setCategory] = useState("");
 
   return (
     <>
-      {/* ////////Project-Expense Tracker/////////////*/}
       <ExpenseForm onSubmit={handleAddExpense} />
       <ExpenseFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
       />
       <ExpensList expenses={visibleExpenses} onDelete={deleteExpense} />
       {/* //////Project-Expense Tracker///End-Line/// */}
-
-      {/* <ProjectExpenseTracker /> */}
-      {/* <FormWithZod /> */}
-      {/* <FormValidation /> */}
-      {/* <Form /> */}
+      <ProductList category={category} />
       {/* <ExpandableText>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, eos velit
         accusamus, non eum doloremque architecto voluptates excepturi quos
@@ -102,42 +63,16 @@ function App() {
         blanditiis fugit commodi id porro error, ullam amet? Id quibusdam ea
         voluptas vero. Hic.
       </ExpandableText> */}
-
-      {/* <Navbar cartItemsCount={cartItems.length} />
-      <Cart
-        cartItems={cartItems}
-        onClear={() => {
-          setCartItems([]);
-        }}
-      /> */}
-
-      {/* <StateExrcise />
-      <StateExrciseN />
-      <ReactIcon />
-      <Drink />
-      <Customer />
-      <UpdatingArrays /> */}
-      {/*  <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-      {toggle && (
-        <Alert onClose={() => setToggle(false)}>
-          Hey!
-          <h4
-            // className={styles["list-group"]} //  className={[
-              styles.listGroup,
-              styles.container,
-            ].join(" ")} // joining the "styles" use (" ") space
-          >
-            Alert
-          </h4>
-        </Alert>
-      )}
-      <MyButton color="danger" onClick={() => setToggle(true)}>
-        <h6>My Button</h6>
-      </MyButton> */}
+      <div>
+        <select
+          onChange={(e) => setCategory(e.target.value)}
+          className="form-select"
+        >
+          <option value=""></option>
+          <option value="Food">Food</option>
+          <option value="Clothing">Clothing</option>
+        </select>
+      </div>
     </>
   );
 }
