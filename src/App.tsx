@@ -19,9 +19,8 @@ import FormWithZod from "./components/Forms/FormWithZod";
 import ProjectExpenseTracker from "./components/ProjectExpenseTracker/components/ProjectExpenseTracker";
 ////////Project-Expense Tracker/////////////
 import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList";
-import ExpensFilter from "./components/ProjectExpenseTracker/components/ExpensFilter";
+import ExpenseFilter from "./components/ProjectExpenseTracker/components/ExpenseFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
-import categories from "./components/ProjectExpenseTracker/categories";
 
 export interface Expense {
   id: number;
@@ -56,7 +55,6 @@ function App() {
   const deleteExpense = (id: number) => {
     setExpenses(expenses.filter((e) => e.id !== id));
   };
-
   /////Project-Expense Tracker////End-Line////
   ////////////////////////////////////////////
 
@@ -81,7 +79,7 @@ function App() {
     <>
       {/* ////////Project-Expense Tracker/////////////*/}
       <ExpenseForm onSubmit={handleAddExpense} />
-      <ExpensFilter
+      <ExpenseFilter
         onSelectCategory={(category) => setSelectedGategory(category)}
       />
       <ExpensList expenses={visibleExpenses} onDelete={deleteExpense} />

@@ -4,7 +4,7 @@ interface Props {
   onSelectCategory: (category: string) => void;
 }
 
-const ExpensFilter = ({ onSelectCategory }: Props) => {
+const ExpenseFilter = ({ onSelectCategory }: Props) => {
   return (
     <>
       <div className="mb-3">
@@ -24,4 +24,4 @@ const ExpensFilter = ({ onSelectCategory }: Props) => {
   );
 };
 
-export default ExpensFilter;
+export default ExpenseFilter;
