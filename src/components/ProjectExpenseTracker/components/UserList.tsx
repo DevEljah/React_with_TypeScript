@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
+import axios, { AxiosError } from "axios";
 interface User {
   id: number;
   name: string;
@@ -21,8 +20,8 @@ const UserList = () => {
         const firstUser = res.data[0].name;
         setUsers(data);
         setFirstUser(firstUser);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err) {
+        setError((err as AxiosError).message);
       }
     };
     getUser();
