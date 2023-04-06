@@ -8,6 +8,7 @@ import ExpensList from "./components/ProjectExpenseTracker/components/ExpensList
 import ExpenseFilter from "./components/ProjectExpenseTracker/components/ExpenseFilter";
 import ExpenseForm from "./components/ProjectExpenseTracker/components/ExpenseForm";
 import ProductList from "./components/ProjectExpenseTracker/components/ProductList";
+import UserList from "./components/ProjectExpenseTracker/components/UserList";
 export interface Expense {
   id: number;
   description: string;
@@ -73,6 +74,8 @@ function App() {
           <option value="Clothing">Clothing</option>
         </select>
       </div>
+
+      <UserList />
     </>
   );
 }
