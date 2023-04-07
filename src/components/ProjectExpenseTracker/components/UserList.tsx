@@ -11,20 +11,25 @@ const UserList = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [firstUser, setFirstUser] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
+
+    setIsLoading(true);
 
     const getUser = async () => {
       try {
         const res = await axios.get<User[]>(url, { signal: controller.signal });
         const data = res.data;
+        setIsLoading(false);
         const firstUser = res.data[0].name;
         setUsers(data);
         setFirstUser(firstUser);
       } catch (err) {
         if (err instanceof CanceledError) return;
         setError((err as AxiosError).message);
+        setIsLoading(false);
       }
     };
     getUser();
@@ -34,7 +39,9 @@ const UserList = () => {
   return (
     <div>
       <h2>FetchData</h2>
-      {error ? (
+      {isLoading ? (
+        <div className="spinner-border"></div>
+      ) : error ? (
         <p className="text-danger"> {error} </p>
       ) : (
         <div>
