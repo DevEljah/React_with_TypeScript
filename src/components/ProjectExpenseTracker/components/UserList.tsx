@@ -60,6 +60,19 @@ const UserList = () => {
       });
   };
 
+  const handleUpdateUser = (user: User) => {
+    const originalUsers = [...users];
+
+    const updatedUser = { ...user, name: user.name + "!" };
+    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
+
+    // axios.put()
+    axios.patch(`${url}/${user.id}`, updatedUser).catch((err) => {
+      setError(err.message);
+      setUsers(originalUsers);
+    });
+  };
+
   return (
     <div>
       <h2>FetchData</h2>
@@ -80,12 +93,20 @@ const UserList = () => {
                 className="list-group-item d-flex justify-content-between"
               >
                 {user.name}
-                <button
-                  onClick={() => handleDeleteUser(user)}
-                  className="btn btn-outline-danger"
-                >
-                  Delete
-                </button>
+                <div>
+                  <button
+                    onClick={() => handleUpdateUser(user)}
+                    className="btn btn-outline-secondary mx-2"
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() => handleDeleteUser(user)}
+                    className="btn btn-outline-danger"
+                  >
+                    Delete
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
@@ -103,3 +124,9 @@ export default UserList;
 // Using the "signal" option with the "axios.get" method, which allows you to pass the "AbortSignal" object to the request. When the AbortSignal is aborted, the request will be canceled.
 
 // If the error is a "CanceledError", nothing is done, otherwise the error message is extracted and stored in the component's state for display in the UI.
+
+// "axios.put()" vs "axios.patch()": //
+// Both "axios.put()" and "axios.patch()" are HTTP methods for updating resources on a server, but they have some key differences:
+
+// "PUT" is used for replacing an entire resource (or an object) with a new representation, while "PATCH" is used for updating a resource partially (one or more of it's[object's] properties).
+// !! Some backend do not support the "PATCH" !!
