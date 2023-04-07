@@ -46,6 +46,20 @@ const UserList = () => {
     });
   };
 
+  const handleAddUser = () => {
+    const originalUsers = [...users];
+    const newUser = { id: 0, name: "Dev" }; //in the real world app it'a form based!
+    setUsers([newUser, ...users]);
+
+    axios
+      .post(url, newUser)
+      .then(({ data: sevedUser }) => setUsers([sevedUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
   return (
     <div>
       <h2>FetchData</h2>
@@ -56,6 +70,9 @@ const UserList = () => {
       ) : (
         <div>
           <h4>first user's name: {firstUser}</h4>
+          <button onClick={handleAddUser} className="btn btn-primary mb-3">
+            Add User
+          </button>
           <ul className="list-group">
             {users.map((user) => (
               <li
