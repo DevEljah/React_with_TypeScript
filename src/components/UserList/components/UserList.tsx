@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios, { AxiosError, CanceledError } from "axios";
+import apiClient, { AxiosError, CanceledError } from "./api-client";
+
 interface User {
   id: number;
   name: string;
@@ -20,7 +21,9 @@ const UserList = () => {
 
     const getUser = async () => {
       try {
-        const res = await axios.get<User[]>(url, { signal: controller.signal });
+        const res = await apiClient.get<User[]>("/users", {
+          signal: controller.signal,
+        });
         const data = res.data;
         setIsLoading(false);
         const firstUser = res.data[0].name;
@@ -40,7 +43,7 @@ const UserList = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    axios.delete(`${url}/${user.id}`).catch((err) => {
+    apiClient.delete("/users/" + user.id).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -51,8 +54,8 @@ const UserList = () => {
     const newUser = { id: 0, name: "Dev" }; //in the real world app it'a form based!
     setUsers([newUser, ...users]);
 
-    axios
-      .post(url, newUser)
+    apiClient
+      .post("/users", newUser)
       .then(({ data: sevedUser }) => setUsers([sevedUser, ...users]))
       .catch((err) => {
         setError(err.message);
@@ -67,7 +70,7 @@ const UserList = () => {
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
     // axios.put()
-    axios.patch(`${url}/${user.id}`, updatedUser).catch((err) => {
+    apiClient.patch("/users/" + user.id, updatedUser).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
