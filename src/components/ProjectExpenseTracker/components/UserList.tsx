@@ -36,6 +36,16 @@ const UserList = () => {
     return () => controller.abort();
   }, []);
 
+  const handleDeleteUser = (user: User) => {
+    const originalUsers = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+
+    axios.delete(`${url}/${user.id}`).catch((err) => {
+      setError(err.message);
+      setUsers(originalUsers);
+    });
+  };
+
   return (
     <div>
       <h2>FetchData</h2>
@@ -46,9 +56,20 @@ const UserList = () => {
       ) : (
         <div>
           <h4>first user's name: {firstUser}</h4>
-          <ul>
+          <ul className="list-group">
             {users.map((user) => (
-              <li key={user.id}>{user.name}</li>
+              <li
+                key={user.id}
+                className="list-group-item d-flex justify-content-between"
+              >
+                {user.name}
+                <button
+                  onClick={() => handleDeleteUser(user)}
+                  className="btn btn-outline-danger"
+                >
+                  Delete
+                </button>
+              </li>
             ))}
           </ul>
         </div>
